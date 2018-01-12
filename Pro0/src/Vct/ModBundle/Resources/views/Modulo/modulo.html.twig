@@ -1,0 +1,127 @@
+{%extends 'layoutmodulo.html.twig'%}
+{% block body %}
+	
+	<div class="col-md-*">
+		<div class="row">
+		</div>
+	</div>
+	<div class="container contentpadd">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="">
+					<div class="form-group">
+						<!-- Button ejecuta modal agregar-->				
+						<button type="button" class="btn btn-default btn-sm" id="agrModal"data-toggle="modal" data-target="#agregar" data-backdrop="static" data-keyboard="false">
+							<i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-file"></i>
+						</button>
+					</div>
+				</div>											
+				<div class="table-responsive"> 
+					<table class="table table table-striped"> 
+						<thead> 
+							<tr> 								
+								<th>Nombre</th>
+								 <th>Ap Paterno</th> 
+								 <th>Ap Materno</th> 
+								 <th>Creado</th> 
+								 <th>Actualizado</th> 
+								 <th>Acciones</th>
+							</tr> 
+						</thead> 
+						<tbody> 
+							{% for person in persons %}
+				                <tr  data-id="{{person.id}}">
+					                <td>{{ person.nombre }}</td>
+					                <td>			                  		
+			                  			<a href="#" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="glyphicon glyphicon-eye-open"></i></a>
+										<a href="{{ path('vct_modulo_edit', {id: person.id}) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>				                  		
+		                  			</td>
+		                		</tr>
+		                	{% endfor %}
+						</tbody> 
+					</table> 
+				</div>
+			</div>			
+		</div>
+		<!-- Seccion Modal Agregar, contiene formulario para agregar persona y telefonos -->
+		<div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header" id="modal-head">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					</div>
+					<div class="modal-body" id="mod-body">
+
+						<form class="form-horizontal" role="form" method="post" action="{{ path('vct_modulo_add') }}" id="formper">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-3 control-label">Nombre</label>
+								<div class="col-md-6">
+									<input type="txt" name="nombre" class="form-control" id="inputEmail3" placeholder="Nombre">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-3 control-label">Ap paterno</label>
+								<div class="col-md-6">
+									<input type="txt" name="apPaterno" class="form-control" id="inputEmail3" placeholder="Ap Paterno">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-3 control-label">Ap Materno</label>
+								<div class="col-md-6">
+									<input type="txt" name="apMaterno" class="form-control" id="inputEmail3" placeholder="Ap Materno">
+								</div>
+							</div>
+							<div class="form-group">
+	    						<div class="col-md-offset-3 col-sm-10">
+	    							<h4>Telefonos</h4>
+	    							<div class="checkbox-inline">
+        								<label>
+          										<input type="checkbox" id="telCl" name="telCl" value="1">  <span class="glyphicon glyphicon glyphicon-phone" aria-hidden="true"></span>
+        								</label>        								
+      								</div>
+      								<div class="checkbox-inline">
+        								<label>
+          										<input type="checkbox" id="telC" name="telC" value="2">  <span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>
+        								</label>
+      								</div>
+      								<div class="checkbox-inline">
+        								<label>
+          										<input type="checkbox" id="telTr" name="telTr" value="3">  <span class="glyphicon glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+        								</label>        								
+      								</div>      								
+	   							</div>
+	  						</div>	
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-3 control-label" id="labelhide1">Tel-Celular</label>
+								<div class="col-md-6" id="telcel">
+									
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-3 control-label" id="labelhide2">Tel-Casa</label>
+								<div class="col-md-6" id="telcasa">
+									
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-3 control-label" id="labelhide3">Tel-Trabajo</label>
+								<div class="col-md-6" id="teltrabajo">
+									
+								</div>
+							</div>											
+							<div class="form-group">
+								<div class="col-md-offset-9 col-md-6">
+									<button type="submit" class="btn btn-default" id="enviar"> <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Guardar</button>
+								</div>			
+							</div>							
+						</form>
+					</div>
+					<div class="modal-footer" id="modal-foo">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+{% endblock %}

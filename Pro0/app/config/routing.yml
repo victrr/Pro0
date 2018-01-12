@@ -1,0 +1,7 @@
+vct_mod:
+    resource: "@VctModBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

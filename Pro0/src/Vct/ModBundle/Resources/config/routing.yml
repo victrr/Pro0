@@ -1,0 +1,21 @@
+vct_mod_index:
+    path:     /
+    defaults: { _controller: VctModBundle:Inicio:index }
+
+#este maneja el metodo post del login    
+vct_mod_login:
+    path:   /login
+    defaults: { _controller: VctModBundle:Login:login }
+
+#este maneja el metodo post del login    
+vct_mod_login_check:
+    path:   /login_check
+    defaults: { _controller: VctModBundle:Login:loginCheck }
+    
+#este finaliza sesion
+vct_mod_logout:
+    path:   /logout
+
+vct_modulo_modulo:
+    resource: "@VctModBundle/Resources/config/route/mod.yml" 
+    prefix: /modulo

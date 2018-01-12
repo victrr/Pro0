@@ -1,0 +1,26 @@
+/*
+	Documento styles uso de CSS
+	Autor: VCTR	
+	Descripcion: Hoja de estilos para el uso de las plantillas creadas en el modulo
+*/
+
+/* Se agrega un padding de 100px al div contenedor*/
+.contentpadd{
+	padding:100px;
+}
+
+#modal-head{
+	background: rgba(21, 84, 178, 0.8);	
+	color: white;
+}
+
+
+
+#mod-body{
+	background: rgba(0, 0, 0, 0.0);	
+	
+}
+
+#labelhide1, #labelhide2, #labelhide3{
+	display: none;
+}

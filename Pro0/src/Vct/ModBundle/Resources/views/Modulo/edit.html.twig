@@ -1,0 +1,60 @@
+{%extends 'layoutmodulo.html.twig'%}
+{% block body %}
+	
+	<div class="col-md-*">
+		<div class="row">
+		</div>
+	</div>
+	<div class="container contentpadd">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="navbar-inner">
+				<ol class="breadcrumb">
+					<li><a href="{{path('vct_modulo_inicio')}}">Inicio</a></li>
+					<li class="active">Editar usuario</li>
+				</ol>										
+			 </div>
+				<div class="panel-heading">
+					<div class="panel-title"><i class="glyphicon glyphicon-edit"></i> <strong>Editar usuario: </strong> <span class="label label-warning"> {{ persona.nombre}} {{ persona.apPAterno }} {{ persona.apMaterno }}</span></div>
+				</div>
+				{{ form_start(form, { 'attr' : {'novalidate' : 'novalidate', 'role' : 'form', 'class': 'form-horizontal'} }) }}
+			  		<div class="form-group">
+			  			<div class="col-sm-2 control-label">
+						    {{form_label(form.nombre) }}
+						</div>
+						<div class="col-sm-8">
+						    {{form_widget(form.nombre, {'attr' : {'class' : 'form-control', 'placeholder' : 'Nombre'} }) }}
+						<span class="text-danger">{{ form_errors(form.nombre) }}</span>
+			    		</div>
+			  		</div>
+
+			  		<div class="form-group">
+			  			<div class="col-sm-2 control-label">
+						    {{form_label(form.apPaterno) }}
+						</div>
+						<div class="col-sm-8">
+						    {{form_widget(form.apPaterno, {'attr' : {'class' : 'form-control', 'placeholder' : 'Ap paterno'} }) }}
+						<span class="text-danger">{{ form_errors(form.apPaterno) }}</span>
+			    		</div>
+			  		</div>
+
+			  		<div class="form-group">
+			  			<div class="col-sm-2 control-label">
+						    {{form_label(form.apMaterno) }}
+						</div>
+						<div class="col-sm-8">
+						    {{form_widget(form.apMaterno, {'attr' : {'class' : 'form-control', 'placeholder' : 'Ap Materno'} }) }}
+						<span class="text-danger">{{ form_errors(form.apMaterno) }}</span>
+			    		</div>
+			  		</div>
+			 
+			  		<div class="form-group" >
+			  			<div class="col-sm-offset-2 col-sm-10">
+			  				{{form_widget(form.save, {'label' : 'Editar', 'attr' : {'class' : 'btn btn-primary'} }) }}
+			  			</div>
+			  		</div>
+				{{ form_end(form) }}
+			</div>			
+		</div>
+	</div>	
+{% endblock %}

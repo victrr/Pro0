@@ -1,0 +1,19 @@
+vct_modulo_inicio:
+    path:     /modcero
+    defaults: { _controller: VctModBundle:Modulo:index }
+
+vct_modulo_add:
+    path:     /modulo/add
+    defaults: { _controller: VctModBundle:Modulo:add }
+
+vct_modulo_edit:
+    path:   /modulo/edit/{id}
+    defaults: { _controller: VctModBundle:Modulo:edit }
+    
+vct_modulo_update:
+    path:   /modulo/update/{id}
+    defaults: { _controller: VctModBundle:Modulo:update }
+    methods: [POST, PUT]
+    
+
+   

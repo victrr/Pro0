@@ -1,0 +1,4 @@
+services:
+#    vct_mod.example:
+#        class: Vct\ModBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
