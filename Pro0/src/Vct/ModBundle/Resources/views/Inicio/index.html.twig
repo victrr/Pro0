@@ -4,17 +4,20 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
-					<img id="logo" height="20" src="{{asset('public/logos/logo.png')}}" width="20" class="img-responsive" alt="Responsive image">
+					<img id="logo" height="20" src="{{asset('public/logos/logo.png')}}" width="25" class="img-responsive" alt="Responsive image">
 				</a>
-				<p>
-					Modulo Cero	
-				</p>
+
 			</div>
 		</div>
 	</nav>
 	<div class="container">
 		{% if error%}			
-			 <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>			
+			 <div class="alert alert-danger">
+ 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>							
+                <div class="container">Erro de credenciales</div>
+            </div>		
 		{% endif %}
 		{%for flashMessage in app.session.flashbag.get('alert') %}
             <div class="alert alert-danger" role="alert">

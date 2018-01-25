@@ -20,7 +20,6 @@ class InicioController extends Controller
         $error = $authenticationUtils->getLastAuthenticationError();
         // ultimo dato ingresado por el usuario
         $lastUsername = $authenticationUtils->getLastUsername();
-        
         return $this->render('VctModBundle:Inicio:index.html.twig', array('last_username' => $lastUsername, 'error' => $error));
     }
 

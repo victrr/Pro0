@@ -8,7 +8,7 @@
 
 
 /**
-*@description Agrega un nuevo campo al formulario 
+*@description agrega elemento telcelu
 */
 $(document).ready(function() {
 	var newnum =0;  
@@ -16,7 +16,7 @@ $(document).ready(function() {
     if (this.checked) {
     	newnum = newnum + 1
         $( "#labelhide1" ).show( "slow" );
-   		$('#telcel').append('<input type=text class="form-control" id="telcelu" placeholder="" name="telcelu" />');
+   		$('#telcel').append('<input type="number" class="form-control" id="telcelu" placeholder="" name="telcelu" />');
    		if (newnum == 1)
 	    {
 	     newnum =0;
@@ -30,12 +30,15 @@ $(document).ready(function() {
 		}
     }
 });
-
+/*
+*@description agrega elemento telcasa
+*
+*/
 $('#telC').change(function() {
     if (this.checked) {
     	newnum = newnum + 1
         $( "#labelhide2" ).show( "slow" );
-   		$('#telcasa').append('<input type=text class="form-control" id="telcas" placeholder="" name="telcas" />');
+   		$('#telcasa').append('<input type="number" class="form-control" id="telcas" placeholder="" name="telcas" />');
    		if (newnum == 1)
 	    {
 	     newnum = 0;
@@ -50,12 +53,16 @@ $('#telC').change(function() {
     }
 });
 
+/*
+*@description agrega elemento teltrab
+*
+*/
 $('#telTr').change(function() {
  
     if (this.checked) {
     	newnum = newnum + 1
         $( "#labelhide3" ).show( "slow" );
-   		$('#teltrabajo').append('<input type=text class="form-control" id="teltrab" placeholder="" name="teltrab" />');
+   		$('#teltrabajo').append('<input type="number" class="form-control" id="teltrab" placeholder="" name="teltrab" />');
    		if (newnum == 1)
 	    {
 	     newnum = 0;
@@ -70,15 +77,31 @@ $('#telTr').change(function() {
     }
 });
 });
+/*
+*@description remueve elemento
+*
+*/
 function removeId(id){
  $(id).empty();   
 }
+/*
+*@description remueve elementod telefono
+*
+*/
 function removeTels() {
     $('#telcel,#telcasa,#teltrabajo').empty();
 }
+/*
+*@description oculta etiquetas tel
+*
+*/
 function hideLabels(){
     $( "#labelhide1,#labelhide2,#labelhide3" ).hide();
 }
+/*
+*@description oculta elemento
+*
+*/
 function hideId(id){
     $(id).hide();
 }
@@ -88,7 +111,6 @@ function hideId(id){
 *
 */
 function enviarform() {
-    //$('#formper').submit(function(){
     	var formURL = $('#formper').attr('action');
         var datos = $('#formper').serialize();
         console.log(datos+' '+formURL);
@@ -100,11 +122,7 @@ function enviarform() {
             async: true,
             success: function (data)
             {   
-                //$('#agregar').empty(); 
-                $( "#alert_success").fadeIn(1000);
-                //$(".modal").on("hidden.bs.modal", function(){
-                  //  $(".modal-body").html("");
-               // });           
+                $( "#alert_success").fadeIn(1000);        
                setTimeout('document.location.reload()',1000);
 
             }
@@ -148,10 +166,11 @@ $('#enviar').click(function() {
     }else if (teltrab == '') {
         msnVal ('Tel-Trabajo');
     }
-    else if ( $("#telcelu").length > 0 ) {
+   /* else if ( $("#telcelu").length > 0 ) {
         if (!validaTel('#telcelu')){
+            alert(validaTel('#telcelu'));
             msnVal ('Tel-Celular no es un numero telefonico valido.');
-        }
+        }else {}
     }
     else if ( $("#telcas").length > 0 ) {
         if (!validaTel('#telcas')){
@@ -162,23 +181,34 @@ $('#enviar').click(function() {
         if (!validaTel('#teltrab')){
             msnVal ('Tel-Trabajo no es un numero telefonico valido.');
         }
-    }
+    }*/
     else{
-        //enviarform();
+        enviarform();
     }   
 });
 
+/**
+* @description Valida numerico y telefono
+* @param id
+*/
 function validaTel(id){
-    if ($(id).val().length != 9 || isNaN($(id).val())){
+    if ($(id).val().length < 9 || isNaN($(id).val())){
         return false;
     }
     return true;
 }
-
+/**
+* @description oculta mensajes
+* 
+*/
 $('#nombre,#appaterno,#apmaterno,#telcelu,#telcas,#teltrab').focus(function() {
     $( "#mensaje_val" ).hide( "slow" );        
 });
 
+/**
+* @description oculta telefono mensajes
+* 
+*/
 $( "#telCl,#telC,#telTr" ).on( "click", function() {
     $( "#mensaje_val" ).hide( "slow" );   
 });
@@ -193,9 +223,11 @@ function msnVal (msn){
     $('#texto').append('<p>Verifique campo '+ msn + '</p>');
 }
 
-
+/**
+* @description Borra datos de formulario en modal
+* 
+*/
 $('#agregar').on('hidden.bs.modal', function (e) {
-    alert('lol');
     $('.formModal')[0].reset();
     $( "#mensaje_val" ).hide( "slow" );  
     hideLabels();
