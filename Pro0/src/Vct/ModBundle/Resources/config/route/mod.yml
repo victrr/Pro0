@@ -5,7 +5,7 @@ vct_modulo_inicio:
 vct_modulo_add:
     path:     /modulo/add
     defaults: { _controller: VctModBundle:Modulo:add }
-
+    methods: POST
 vct_modulo_edit:
     path:   /modulo/edit/{id}
     defaults: { _controller: VctModBundle:Modulo:edit }
@@ -15,5 +15,7 @@ vct_modulo_update:
     defaults: { _controller: VctModBundle:Modulo:update }
     methods: [POST, PUT]
     
-
+vct_modulo_view:
+    path:   /modulo/ver/{id}
+    defaults: { _controller: VctModBundle:Modulo:view }
    

@@ -1,0 +1,155 @@
+{%extends 'layoutmodulo.html.twig'%}
+{% block body %}
+	<div class="col-md-">
+		<div class="row">
+		</div>
+	</div>
+	<div class="container contentpadd">
+		<div class="row">
+			<div class="col-md-12">
+			{% for person in persons %}
+			<h4>Detalle persona: <strong>{{ person.nombre}} {{ person.apPaterno }} {{ person.apMaterno }}</strong></h4>			
+			<div class="panel-body">
+				<div id="rootwizard">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<ol class="breadcrumb">
+							<li><a href="{{path('vct_modulo_inicio')}}">Inicio</a></li>
+							<li class="active">{{ person.nombre}} {{ person.apPaterno }} {{ person.apMaterno }}</li>
+						</ol>										
+					 </div>
+				</div>
+			
+				<div class="tab-content">
+			    	<div class="tab-pane active">
+						<div class="content-box-large">
+							<div class="row">					
+							</div>
+			  				<div class="panel-body">
+			  					<div class="col-md-7">
+						        	<dl>
+						        		<div class="row">
+						        			<div class="form-group">
+							        			<div class="col-md-6 control-label">
+							            			<dt>Persona: </dt>
+							            		</div> 
+							       
+							                	<div class="col-md-6">
+								                	<dd>
+								                		{{ person.nombre }}
+								                	</dd>
+							                	</div>
+						             		</div>
+						             	</div>
+						             	<br />
+						             	
+						             	<div class="row">
+						        			<div class="form-group">
+							        			<div class="col-md-6 control-label">
+							            			<dt>Apellido Paterno: </dt>
+							            		</div>
+							       
+							                	<div class="col-md-6">
+								                	<dd>
+								                		{{ person.apPaterno }}
+								                	</dd>
+							                	</div>
+						             		</div>
+						             	</div>
+						             	<br />
+						             	
+						             	<div class="row">
+						             	<div class="form-group">
+							             	<div class="col-md-6 control-label">
+							                	<dt>Apellido Materno</dt>
+							                </div>
+							                <div class="col-md-6">
+								                <dd>
+								                	{{ person.apMaterno }}
+								                </dd>
+							                </div>
+						                </div>
+						                </div>
+						                <br />
+						                
+						             	<div class="row">
+						             	<div class="form-group">
+							             	<div class="col-md-6 control-label">
+							                	<dt>Tel-Celular</dt>
+							                </div>
+							                <div class="col-md-6">
+								                <dd>
+								                	{{ person.tipoCel }}
+								                </dd>
+							                </div>
+						             	</div>
+						             	</div>
+						             	<br />
+						                
+						                <div class="row">
+						                <div class="form-group">
+							             	<div class="col-md-6 control-label">
+							                	<dt>Tel-Casa</dt>
+							                </div>
+							                <div class="col-md-6">
+								                <dd>
+								                	{{ person.tipoCasa }}
+								                </dd>
+							                </div>
+						                </div>
+						                </div>
+						                <br />
+						                
+						                <div class="row">
+						                <div class="form-group">
+							             	<div class="col-md-6 control-label">
+							                	<dt>Tel-Trabajo</dt>
+							                </div>
+							                <div class="col-md-6">
+								                <dd>
+								                	{{ person.tipoTrabajo }}
+								                </dd>
+							                </div>
+						                </div>
+						                </div>
+						                <br />
+
+						                <div class="row">
+						                <div class="form-group">
+							             	<div class="col-md-6 control-label">
+							                	<dt>Fecha Creado</dt>
+							             	</div>
+							                <div class="col-md-6 ">
+								                <dd>
+								                	{{ person.fe_creado }}
+								                </dd>
+							                </div>
+						                </div>
+						               	</div>
+						               	<br />
+						               	
+						               	<div class="row">
+						             	<div class="form-group">
+							             	<div class="col-md-6 control-label">
+							                	<dt>Fecha Actualizado</dt>
+							        		</div>
+							                <div class="col-md-6 ">
+								                <dd>
+								                	{{ person.fe_actualizado }}
+								                </dd>
+							                </div>
+						                </div>
+										</div>
+						        	</dl>
+								</div>
+	
+			  				</div>
+			  			</div>
+		  			</div>
+			    </div>
+			</div>	
+			{% endfor %}
+			</div>			
+		</div>
+	</div>	
+{% endblock %}

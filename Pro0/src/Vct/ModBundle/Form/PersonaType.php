@@ -2,9 +2,12 @@
 
 namespace Vct\ModBundle\Form;
 
+use Vct\ModBundle\Entity\Persona;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Vct\ModBundle\Form\PersonaType;
 
 class PersonaType extends AbstractType
 {
@@ -19,24 +22,24 @@ class PersonaType extends AbstractType
             ->add('apPaterno')
             ->add('apMaterno')
             ->add('save','submit', array('label' => 'save people'));
+        
+        $builder->add('tel', 'collection', array('type' => new \Vct\ModBundle\Form\TelefonoType(), 'allow_add' => true,'prototype' => true,));
+        
 
-    }/**
-     * * @param OptionsResolverInterface $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Vct\ModBundle\Entity\Persona'
-        ));
+
     }
 
     /**
-     * @return string
-     */
-    public function getName()
+    * @param OptionsResolverInterface $resolver
+    */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return 'persona';
+        $resolver->setDefaults(array(
+            'data_class' => 'Vct\ModBundle\Entity\Persona',
+        ));
     }
+
+    
 
 
 }

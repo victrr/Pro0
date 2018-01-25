@@ -5,7 +5,7 @@ vct_mod_index:
 #este maneja el metodo post del login    
 vct_mod_login:
     path:   /login
-    defaults: { _controller: VctModBundle:Login:login }
+    defaults: { _controller: VctModBundle:Login:index }
 
 #este maneja el metodo post del login    
 vct_mod_login_check:

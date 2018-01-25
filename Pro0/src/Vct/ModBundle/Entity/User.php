@@ -2,7 +2,6 @@
 
 namespace Vct\ModBundle\Entity;
 
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Common\Collection\ArrayCollection;
@@ -301,7 +300,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
-            //$this->username,
+            $this->email,
             $this->password,
             $this->role,
             $this->isActive                
@@ -312,7 +311,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         list(
             $this->id,
-            //$this->username,
+            $this->email,
             $this->password,
             $this->role,
             $this->isActive

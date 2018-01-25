@@ -1,17 +1,18 @@
 {%extends 'layoutmodulo.html.twig'%}
 {% block body %}
 	
-	<div class="col-md-*">
+	<div class="col-md-">
 		<div class="row">
 		</div>
 	</div>
 	<div class="container contentpadd">
 		<div class="row">
 			<div class="col-md-12">
+				<h4>Modulo cero Sección Personas</h4>				
 				<div class="">
 					<div class="form-group">
 						<!-- Button ejecuta modal agregar-->				
-						<button type="button" class="btn btn-default btn-sm" id="agrModal"data-toggle="modal" data-target="#agregar" data-backdrop="static" data-keyboard="false">
+						<button type="button" class="btn btn-default btn-sm" id="agrModal"data-toggle="modal" data-target="#agregar" data-backdrop="static" data-keyboard="false"data-toggle="tooltip" data-placement="bottom" title="Agregar Registro">
 							<i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-file"></i>
 						</button>
 					</div>
@@ -23,6 +24,9 @@
 								<th>Nombre</th>
 								 <th>Ap Paterno</th> 
 								 <th>Ap Materno</th> 
+								 <th>Tel Celular</th> 
+								 <th>Tel Casa</th> 
+								 <th>Tel Trabajo</th> 
 								 <th>Creado</th> 
 								 <th>Actualizado</th> 
 								 <th>Acciones</th>
@@ -32,9 +36,18 @@
 							{% for person in persons %}
 				                <tr  data-id="{{person.id}}">
 					                <td>{{ person.nombre }}</td>
+					                <td>{{ person.apPaterno }}</td>
+					                <td>{{ person.apMaterno }}</td>
+					                <td>{{ person.tipoCel }}</td>
+					                <td>{{ person.tipoCasa }}</td>
+					                <td>{{ person.tipoTrabajo }}</td>
+					                <td>{{ person.fe_creado }}</td>
+					                <td>{{ person.fe_actualizado }}</td>					                
 					                <td>			                  		
-			                  			<a href="#" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="glyphicon glyphicon-eye-open"></i></a>
-										<a href="{{ path('vct_modulo_edit', {id: person.id}) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>				                  		
+			                  			<a href="{{ path('vct_modulo_view', {id: person.id}) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="glyphicon glyphicon-eye-open"></i></a>
+										
+											<a href="{{ path('vct_modulo_edit', {id: person.id}) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+																	
 		                  			</td>
 		                		</tr>
 		                	{% endfor %}
@@ -46,30 +59,34 @@
 		<!-- Seccion Modal Agregar, contiene formulario para agregar persona y telefonos -->
 		<div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header" id="modal-head">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				<div class="modal-content">					
+					<div class="modal-header" id="modal-head">						
+						<h4 class="modal-title" id="myModalLabel">Agregar Persona</h4>
 					</div>
 					<div class="modal-body" id="mod-body">
-
-						<form class="form-horizontal" role="form" method="post" action="{{ path('vct_modulo_add') }}" id="formper">
+						 <div class="alert alert-danger" id="mensaje_val" role="alert" style="display: none;">						
+	                        <div id="texto"> </div>
+	                    </div>
+	                    <div class="alert alert-success" role="alert" id="alert_success" style="display: none;">		     									
+		                    <div class="container"> Se ha creado un nuevo registro </div>
+		                </div>
+						<form class="form-horizontal formModal" role="form" method="post" action="{{ path('vct_modulo_add') }}" id="formper">
 							<div class="form-group">
 								<label for="inputEmail3" class="col-md-3 control-label">Nombre</label>
 								<div class="col-md-6">
-									<input type="txt" name="nombre" class="form-control" id="inputEmail3" placeholder="Nombre">
+									<input type="txt" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail3" class="col-md-3 control-label">Ap paterno</label>
 								<div class="col-md-6">
-									<input type="txt" name="apPaterno" class="form-control" id="inputEmail3" placeholder="Ap Paterno">
+									<input type="txt" name="apPaterno" class="form-control" id="appaterno" placeholder="Ap Paterno">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail3" class="col-md-3 control-label">Ap Materno</label>
 								<div class="col-md-6">
-									<input type="txt" name="apMaterno" class="form-control" id="inputEmail3" placeholder="Ap Materno">
+									<input type="txt" name="apMaterno" class="form-control" id="apmaterno" placeholder="Ap Materno">
 								</div>
 							</div>
 							<div class="form-group">
@@ -109,16 +126,17 @@
 								<div class="col-md-6" id="teltrabajo">
 									
 								</div>
-							</div>											
+							</div>						
 							<div class="form-group">
-								<div class="col-md-offset-9 col-md-6">
-									<button type="submit" class="btn btn-default" id="enviar"> <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Guardar</button>
+								<div class="col-md-offset-1 col-md-6">
+									<button type="button" class="btn btn-default" id="enviar"> <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Guardar</button>
 								</div>			
 							</div>							
 						</form>
 					</div>
-					<div class="modal-footer" id="modal-foo">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>						
+					<div class="modal-footer" id="modal-foo">						
+						<a type="button" href="#" class="btn btn-default cerr" >Cerrar</a>		
+						<button type="button" class="btn btn-default cerr" data-dismiss="modal">Close</button>			
 					</div>
 				</div>
 			</div>
